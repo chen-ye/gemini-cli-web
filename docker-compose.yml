@@ -1,8 +1,18 @@
 services:
   gemini-web:
-    build: .
+    build:
+      context: .
+      args:
+        # You can override this with the desired version
+        BRANCH_NAME: v0.3.15
     image: gemini-cli-web:latest
+    platform: linux/amd64
     container_name: gemini-cli-web
     restart: unless-stopped
     ports:
-      - "5173:5173"
+      - "3000:1858"
+    volumes:
+      - ../:/root/Projects
+      - /Users/cye/.gemini:/root/.gemini
+    environment:
+      - HOST=0.0.0.0
