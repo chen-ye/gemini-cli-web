@@ -1,0 +1,8 @@
+services:
+  gemini-web:
+    build: .
+    image: gemini-cli-web:latest
+    container_name: gemini-cli-web
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
